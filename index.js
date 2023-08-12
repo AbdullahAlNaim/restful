@@ -22,8 +22,11 @@ const comments = [
     {
         username: 'Charlie',
         comment: 'Learning how to code its so cool!'
+    },
+    {
+        username: 'Bobby',
+        comment: 'Is a random trainer'
     }
-
 ]
 
 //these are routes
@@ -40,8 +43,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/comments', (req, res) => {
-    console.log(req.body);
-    res.send('IT WORKS')
+    //console.log(req.body);
+    const { username, comment } = req.body;
+    comments.push({ username, comment })
+    res.redirect('/comments');
 })
 
 
