@@ -12,18 +12,22 @@ app.set('views', path.join(__dirname, 'views'));
 
 const comments = [
     {
+        id: 1,
         username: 'Todd',
         comment: 'I like fishes!'
     },
     {
+        id: 2,
         username: 'Vinc',
         comment: 'Playing soccer is fun!'
     },
     {
+        id: 3,
         username: 'Charlie',
         comment: 'Learning how to code its so cool!'
     },
     {
+        id: 4,
         username: 'Bobby',
         comment: 'Is a random trainer'
     }
@@ -50,6 +54,11 @@ app.post('/comments', (req, res) => {
 })
 
 
+app.get('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(c => c.id === parseInt(id));
+    res.render('comments/show', { comment });
+})
 
 
 
