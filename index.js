@@ -59,10 +59,15 @@ app.post('/comments', (req, res) => {
 app.get('/comments/:id', (req, res) => {
     const { id } = req.params;
     const comment = comments.find(c => c.id === id);
-    res.render('comments/show', { comment });
+    const foundComment = comment.find(c => c.id === id);
+    foundComment.comment = newCommentText;
 })
 
-
+app.patch('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const newCommentText = req.body.comment;
+    //const comment = comments.find(c => c.id === id);
+})
 
 app.get('/tacos', (req, res) => {
     res.send('Get /tacos response');
